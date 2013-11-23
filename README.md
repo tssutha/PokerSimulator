@@ -4,7 +4,8 @@ The Pokerhand.py contains code for Simple Poker game simulator.
 
 [Read more about poker hand ranking here](http://en.wikipedia.org/wiki/Hand_rankings)
 
-
+<pre>
+<code>
 P  - One Pair
 2P - Two Pair
 3K - Three of a Kind
@@ -13,6 +14,8 @@ F  - Flush
 FH - Full House
 4K - Four of a Kind
 SF - Straight Flush
+</code>
+</pre>
 
 
 Average probabilities of each rank after 10000 shuffles
