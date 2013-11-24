@@ -292,7 +292,7 @@ def write_header():
 	
 def write_to_file(d):
 	fp = open("pokerdata.txt", 'a')
-	data = "%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\n" % \
+	data = "%d,%d,%d,%d,%d,%d,%d,%d\n" % \
 			(d.get('P',0), d.get('TP',0), \
 			 d.get('3K',0), d.get('S',0), \
 			 d.get('F',0), d.get('FH',0), 
@@ -311,6 +311,17 @@ def calculate_proba(d, n):
 	print "Probability of FH : %.5f" % (d.get('FH',0)/totalhands)
 	print "Probability of 4K : %.5f" % (d.get('4K',0)/totalhands)
 	print "Probability of SF : %.5f" % (d.get('SF',0)/totalhands)
+	print "Probability of SNL : %.5f" % (d.get('SNL',0)/totalhands)
+	
+	proba = "%.5f, %.5f, %.5f, %.5f, %.5f, %.5f, %.5f, %.5f, %.5f\n" % \
+	         ((d.get('P',0)/totalhands), (d.get('TP',0)/totalhands),
+	          (d.get('3K',0)/totalhands), (d.get('S',0)/totalhands),
+	          (d.get('F',0)/totalhands),(d.get('FH',0)/totalhands),
+	          (d.get('4K',0)/totalhands), (d.get('SF',0)/totalhands),
+	          (d.get('SNL',0)/totalhands))
+	fp = open("pokerProba.txt", 'a')
+	fp.write(proba)
+	fp.close()
 	
 	
 	
@@ -326,7 +337,7 @@ if __name__ == '__main__':
 		fData = {}
 		for i in range(n):
 			deck = Deck()
-			res = deck.deal_hands(7, 7)
+			res = deck.deal_hands(7, 5)
 			for h in res:
 				s =  h.classify()
 				if s == "P":
